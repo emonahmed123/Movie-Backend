@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/server.js",
   "scripts": {
-    "start:dev":"ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,10 +17,13 @@
     "mongoose": "^8.16.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.29.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "eslint": "^9.29.0",
     "nodemon": "^3.1.10",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.1"
   }
 }
