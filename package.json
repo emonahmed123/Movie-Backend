@@ -4,6 +4,12 @@
   "main": "./dist/server.js",
   "scripts": {
     "start:dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "start:prod": "node ./dist/server.js",
+    "build": "tsc",
+    "lint": " npx eslint  .  --ignore-pattern [String]",
+    "lint:fix": "npx eslint  . --fix",
+    "prettier": "npx prettier --check src ",
+    "prettier:fix": "npx prettier --write src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -21,7 +27,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
     "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.1"
