@@ -13,7 +13,7 @@ const movieSchema = new Schema<TMovie>({
   releaseDate: { type: Date, required: true },
   review: [reviewSchema],
   genre: { type: String, required: true },
-  slug: { type: String, required: true, unique: true },
+  slug: { type: String },
   viewCount: { type: Number, default: 0 },
   isDeleted: { type: Boolean, default: false },
 });
