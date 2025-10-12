@@ -1,15 +1,8 @@
-import express, { Request, Response } from 'express';
-import { Movie } from './moviemodle';
+import express from 'express';
+import { MovieController } from './moviecontroller';
 
 const router = express.Router();
 
-router.post('/', async (req: Request, res: Response) => {
-  const result = await Movie.create(req.body);
-  res.json({
-    status: 'success',
-    message: 'Movie created successfully',
-    data: result,
-  });
-});
+router.post('/', MovieController.createMovie);
 
 export const MovieRoute = router;
