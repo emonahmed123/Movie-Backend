@@ -28,5 +28,5 @@ movieSchema.pre('save', function (next) {
   this.slug = slug;
   next();
 });
-
+// slove problem
 export const Movie = model<TMovie>('Movie', movieSchema);
