@@ -1,15 +1,8 @@
-import { format } from 'date-fns';
-import slugify from 'slugify';
 import { TMovie } from './movieInterface';
 import { Movie } from './moviemodle';
 
 const createMoive = async (payload: TMovie) => {
-  const date = format(payload.releaseDate, 'dd-MM-yyyy');
-  console.log(date);
-
-  const slug = slugify(`${payload.title}-${date}`, { lower: true });
-
-  const result = await Movie.create({ ...payload, slug });
+  const result = await Movie.create(payload);
 
   return result;
 };
