@@ -1,3 +1,5 @@
+import { Model } from 'mongoose';
+
 export type TReview = {
   email: string;
   rating: number;
@@ -14,3 +16,10 @@ export type TMovie = {
   viewCount: number;
   isDeleted?: boolean;
 };
+
+// Put all user instance methods in this interface:
+export type TMovieMethods = {
+  createSlug(payload: TMovie): string;
+};
+
+export type TMovieModel = Model<TMovie, Record<string, unknown>, TMovieMethods>;

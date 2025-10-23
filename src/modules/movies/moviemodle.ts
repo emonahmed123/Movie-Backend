@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { Schema, model } from 'mongoose';
 import slugify from 'slugify';
-import { TMovie, TReview } from './movieInterface';
+import { TMovie, TMovieModel, TReview } from './movieInterface';
 
 const reviewSchema = new Schema<TReview>({
   email: { type: String, required: true },
@@ -20,13 +20,20 @@ const movieSchema = new Schema<TMovie>({
   isDeleted: { type: Boolean, default: false },
 });
 
-movieSchema.pre('save', function (next) {
-  const date = format(this.releaseDate, 'dd-MM-yyyy');
-  // console.log(date);
+// movieSchema.pre('save', function (next) {
+//   const date = format(this.releaseDate, 'dd-MM-yyyy');
+//   // console.log(date);
 
-  const slug = slugify(`${this.title}-${date}`, { lower: true });
-  this.slug = slug;
-  next();
+//   const slug = slugify(`${this.title}-${date}`, { lower: true });
+//   this.slug = slug;
+//   next();
+// });
+// // slove problem
+
+movieSchema.method('createSlug', function createSlug(payload: TMovie): string {
+  const date = format(payload.releaseDate, 'dd-MM-yyyy');
+  const slug = slugify(`${payload.title}-${date}`, { lower: true });
+  return slug;
 });
-// slove problem
-export const Movie = model<TMovie>('Movie', movieSchema);
+
+export const Movie = model<TMovie, TMovieModel>('Movie', movieSchema);

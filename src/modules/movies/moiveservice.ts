@@ -2,8 +2,13 @@ import { TMovie } from './movieInterface';
 import { Movie } from './moviemodle';
 
 const createMoive = async (payload: TMovie) => {
-  const result = await Movie.create(payload);
+  const result = new Movie();
 
+  const slug = Movie.createSlug(payload);
+
+  result.slug = slug;
+
+  await result.save();
   return result;
 };
 const getAllMovies = async () => {
@@ -13,6 +18,7 @@ const getAllMovies = async () => {
 
 const getMovieBySlug = async (slug: string) => {
   const result = await Movie.findOne({ slug: slug });
+
   return result;
 };
 export const MovieService = {
